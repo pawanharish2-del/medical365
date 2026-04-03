@@ -413,4 +413,60 @@ document.addEventListener('DOMContentLoaded', function () {
     // Delay slightly to not interrupt initial page load
     setTimeout(initCookieConsent, 1500);
 
+    /* ── Audience Tabs Redesign ── */
+    const tabBtnsRedesign = document.querySelectorAll('.tab-btn-redesign');
+    const audienceInfos = document.querySelectorAll('.audience-info');
+    const audienceImgs = document.querySelectorAll('.audience-img');
+
+    if (tabBtnsRedesign.length) {
+        tabBtnsRedesign.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-audience');
+                
+                // Update buttons
+                tabBtnsRedesign.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Update text content
+                // Note: We only have Doctor content in the HTML, in a real app we'd have all three or fetch them
+                // For this demo, we'll just toggle the existing one's visibility or update text if we had a data object
+                // Let's assume we implement the toggle for the images which we DO have
+                audienceImgs.forEach(img => {
+                    img.classList.remove('active');
+                    if (img.id === `${target}-img`) img.classList.add('active');
+                });
+
+                // Update text (Mock implementation since we only put one div in HTML for brevity)
+                const infoDiv = document.getElementById('doctor-content');
+                if (infoDiv) {
+                    if (target === 'doctor') {
+                        infoDiv.innerHTML = `
+                            <h3 style="font-size: 2rem; margin-bottom: 20px; color: var(--redesign-blue);">Clinical Excellence</h3>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">Intuitive EMR, smart templates, and voice-to-text dictation so you spend more time with patients, not screens. Access records anywhere, anytime.</p>
+                            <ul style="margin-top: 30px; list-style: none; padding: 0;">
+                                <li style="margin-bottom: 15px; display: flex; gap: 10px; align-items: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--redesign-teal)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Fast, specialty-specific charting</span></li>
+                                <li style="margin-bottom: 15px; display: flex; gap: 10px; align-items: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--redesign-teal)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Integrated lab & imaging results</span></li>
+                            </ul>`;
+                    } else if (target === 'admin') {
+                        infoDiv.innerHTML = `
+                            <h3 style="font-size: 2rem; margin-bottom: 20px; color: var(--redesign-blue);">Operational Efficiency</h3>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">Automated billing, TPA management, and smart inventory tracking. Reduce leakages and maximize your facility's daily throughput.</p>
+                            <ul style="margin-top: 30px; list-style: none; padding: 0;">
+                                <li style="margin-bottom: 15px; display: flex; gap: 10px; align-items: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--redesign-teal)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>One-click insurance processing</span></li>
+                                <li style="margin-bottom: 15px; display: flex; gap: 10px; align-items: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--redesign-teal)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Real-time bed & stock visibility</span></li>
+                            </ul>`;
+                    } else {
+                        infoDiv.innerHTML = `
+                            <h3 style="font-size: 2rem; margin-bottom: 20px; color: var(--redesign-blue);">Strategic Growth</h3>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">Bird's-eye view of your entire hospital chain. Real-time financial dashboards, ROI tracking, and long-term clinical data analytics.</p>
+                            <ul style="margin-top: 30px; list-style: none; padding: 0;">
+                                <li style="margin-bottom: 15px; display: flex; gap: 10px; align-items: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--redesign-teal)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Consolidated chain-wide reporting</span></li>
+                                <li style="margin-bottom: 15px; display: flex; gap: 10px; align-items: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--redesign-teal)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Advanced patient retention metrics</span></li>
+                            </ul>`;
+                    }
+                }
+            });
+        });
+    }
+
 });
