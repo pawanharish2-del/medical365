@@ -372,33 +372,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* ── Lightweight Cookie Consent Banner ── */
     function initCookieConsent() {
-        if (localStorage.getItem('cookie_consent_accepted')) return;
+        if (localStorage.getItem('cookie_consent_accepted') || document.getElementById('cookie-consent-banner')) return;
 
         var banner = document.createElement('div');
         banner.id = 'cookie-consent-banner';
+        banner.style.cssText = "position: fixed; bottom: 24px; left: 24px; right: 24px; z-index: 99999;";
         banner.innerHTML = `
-            <div class="cookie-banner-content" style="position: fixed; bottom: 24px; left: 24px; right: 24px; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); padding: 20px 24px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); border: 1px solid rgba(55, 179, 156, 0.2); display: flex; align-items: center; justify-content: space-between; gap: 24px; z-index: 9999; flex-wrap: wrap;">
-                <div class="cookie-text" style="flex: 1; min-width: 250px;">
-                    <p style="margin: 0; font-size: 14px; color: #475569; line-height: 1.5;">We use cookies to enhance your experience and analyze our traffic. By clicking "Accept All", you consent to our use of cookies in accordance with our <a href="privacy-policy" style="color: #37B39C; text-decoration: underline; font-weight: 600;">Privacy Policy</a>.</p>
+            <div class="cookie-banner-content" style="background: rgba(255,255,255,0.98); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 20px 24px; border-radius: 16px; box-shadow: 0 10px 50px rgba(0,0,0,0.15); border: 1px solid rgba(55, 179, 156, 0.2); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; animation: slideUp 0.5s ease-out;">
+                <div class="cookie-text" style="flex: 1; min-width: 260px;">
+                    <p style="margin: 0; font-size: 14px; color: #475569; line-height: 1.6; font-family: 'Inter', sans-serif;">We use cookies to enhance your experience and analyze our traffic. By clicking "Accept All", you consent to our use of cookies in accordance with our <a href="privacy-policy" style="color: #37B39C; text-decoration: underline; font-weight: 600;">Privacy Policy</a>.</p>
                 </div>
                 <div class="cookie-actions" style="display: flex; gap: 12px;">
-                    <button id="cookie-reject" style="padding: 10px 20px; border-radius: 10px; font-size: 14px; font-weight: 600; color: #64748B; background: transparent; border: 1px solid #E2E2E2; cursor: pointer; transition: all 0.2s;">Reject</button>
-                    <button id="cookie-accept" style="padding: 10px 24px; border-radius: 10px; font-size: 14px; font-weight: 600; color: #fff; background: linear-gradient(135deg, #1D5A9F 0%, #37B39C 100%); border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(55, 179, 156, 0.3); transition: all 0.2s;">Accept All</button>
+                    <button id="cookie-reject" style="padding: 11px 22px; border-radius: 10px; font-size: 14px; font-weight: 600; color: #64748B; background: #F1F5F9; border: none; cursor: pointer; transition: all 0.2s;">Reject</button>
+                    <button id="cookie-accept" style="padding: 11px 26px; border-radius: 10px; font-size: 14px; font-weight: 600; color: #fff; background: linear-gradient(135deg, #1D5A9F 0%, #37B39C 100%); border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(55, 179, 156, 0.35); transition: all 0.2s;">Accept All</button>
                 </div>
             </div>
+            <style>
+                @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+                #cookie-accept:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(55, 179, 156, 0.45); }
+                #cookie-reject:hover { background: #E2E8F0; color: #475569; }
+            </style>
         `;
         document.body.appendChild(banner);
 
-        document.getElementById('cookie-accept').onclick = function() {
+        var handleAccept = function(e) {
+            if (e) e.stopPropagation();
             localStorage.setItem('cookie_consent_accepted', 'true');
-            banner.style.display = 'none';
+            banner.remove();
         };
-        document.getElementById('cookie-reject').onclick = function() {
-            banner.style.display = 'none';
+
+        var handleReject = function(e) {
+            if (e) e.stopPropagation();
+            banner.remove();
         };
+
+        document.getElementById('cookie-accept').addEventListener('click', handleAccept);
+        document.getElementById('cookie-reject').addEventListener('click', handleReject);
     }
 
     // Delay slightly to not interrupt initial page load
-    setTimeout(initCookieConsent, 2000);
+    setTimeout(initCookieConsent, 1500);
 
 });
