@@ -2,7 +2,37 @@ const fs = require('fs');
 
 const cities = ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Ajmer", "Bikaner", "Bhilwara", "Alwar", "Sikar", "Pali", "Bharatpur", "Sri Ganganagar"];
 const localAreas = ["Mansarovar", "Vaishali Nagar", "Malviya Nagar", "C-Scheme", "Raja Park", "Jagatpura", "Tonk Road", "Bapu Nagar", "Jhotwara", "Vidyadhar Nagar"];
-const features = ["Hospital Management Software", "Clinic Management System", "EMR Software", "Revenue Cycle Management", "Telemedicine Platform", "Hospital IT Cloud Migration", "ABHA Compliance Software", "Patient Portal Software", "Hospital HRMS", "Healthcare CRM"];
+const features = [
+    "Hospital Management Software", 
+    "Clinic Management System", 
+    "EMR Software", 
+    "Revenue Cycle Management", 
+    "Telemedicine Platform", 
+    "Hospital IT Cloud Migration", 
+    "ABHA Compliance Software", 
+    "Patient Portal Software", 
+    "Hospital HRMS", 
+    "Healthcare CRM",
+    "LIMS Laboratory Information Management",
+    "Nursing Management System",
+    "Operation Theater Management",
+    "Outpatient Software Solutions",
+    "Inpatient Management Software",
+    "Clinical Assessment Form Software",
+    "Hospital Queue Token Management",
+    "Healthcare Kiosk Providers",
+    "Hospital Online Scheduling Software",
+    "Medical Camp Management Software",
+    "Hospital Data Backup Recovery",
+    "FHIR HL7 Compliant Software",
+    "Medical Robotic Process Automation",
+    "Hospital Bed Management Software",
+    "Medical Asset Inventory Management",
+    "Vaccine Management System",
+    "Multi-Facility Hospital Software",
+    "Healthcare Feedback Satisfaction Surveys",
+    "Integrated Population Healthcare Management"
+];
 
 const output = [];
 

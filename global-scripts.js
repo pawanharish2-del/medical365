@@ -183,7 +183,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (overlay) { overlay.classList.add('active'); overlay.setAttribute('aria-hidden', 'false'); }
         document.body.style.overflow    = 'hidden';
         document.body.style.touchAction = 'none';
-        if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
+        if (toggleBtn) {
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            toggleBtn.setAttribute('aria-label', 'Close navigation menu');
+        }
         /* focus first item after slide completes */
         setTimeout(function () {
             var first = nav.querySelector('button:not([disabled]), a[href]');
@@ -197,7 +200,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (overlay) { overlay.classList.remove('active'); overlay.setAttribute('aria-hidden', 'true'); }
         document.body.style.overflow    = '';
         document.body.style.touchAction = '';
-        if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+        if (toggleBtn) {
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            toggleBtn.setAttribute('aria-label', 'Open navigation menu');
+        }
         /* collapse solutions accordion */
         if (megaMenu) megaMenu.classList.remove('active-mobile');
         if (solBtn)   solBtn.setAttribute('aria-expanded', 'false');
@@ -289,18 +295,51 @@ document.addEventListener('DOMContentLoaded', function () {
     if ('IntersectionObserver' in window) {
         var revObs = new IntersectionObserver(function (entries, o) {
             entries.forEach(function (en) {
-                if (en.isIntersecting) { en.target.classList.add('is-visible'); o.unobserve(en.target); }
+                if (en.isIntersecting) { 
+                    en.target.classList.add('active', 'is-visible'); 
+                    o.unobserve(en.target); 
+                }
             });
-        }, { threshold: 0.08 });
-        document.querySelectorAll('.fade-in-up, .fade-in-right, .fade-in-left').forEach(function (el) {
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.reveal, .fade-in, .fade-in-up, .fade-in-right, .fade-in-left').forEach(function (el) {
             revObs.observe(el);
         });
     } else {
-        /* fallback: just show everything */
-        document.querySelectorAll('.fade-in-up, .fade-in-right, .fade-in-left').forEach(function (el) {
-            el.classList.add('is-visible');
+        /* fallback */
+        document.querySelectorAll('.reveal, .fade-in, .fade-in-up, .fade-in-right, .fade-in-left').forEach(function (el) {
+            el.classList.add('active', 'is-visible');
         });
     }
+
+    /* ── Header Scroll Transition ── */
+    var header = document.getElementById('main-header');
+    if (header) {
+        var handleScroll = function() {
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // init
+    }
+
+    /* ── Smooth Scroll for Anchors ── */
+    document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                var h = header ? header.offsetHeight : 0;
+                window.scrollTo({
+                    top: target.offsetTop - h - 20,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 
     /* ── Mega Footer injection (shared component) ── */
     function loadMegaFooter() {
