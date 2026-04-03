@@ -8,28 +8,28 @@ const newFooter = `<footer class="main-footer">
                 <img src="https://medical365.in/medical365logo1.png" alt="Medical365" class="footer-logo">
                 <p>Empowering healthcare providers with modern, cloud-based management solutions.</p>
                 <div style="margin-top: 20px;">
-                    <a href="contact.html" class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">Book a Demo</a>
+                    <a href="contact" class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">Book a Demo</a>
                 </div>
             </div>
             
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="blogs.html">Blogs & News</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="privacy.html" title="Governed by Indian jurisdiction and IT Act">Privacy Policy</a></li>
-                    <li><a href="terms.html" title="Governed by Indian jurisdiction and IT Act">Terms of Service</a></li>
+                    <li><a href="about">About Us</a></li>
+                    <li><a href="blogs">Blogs & News</a></li>
+                    <li><a href="contact">Contact Us</a></li>
+                    <li><a href="privacy" title="Governed by Indian jurisdiction and IT Act">Privacy Policy</a></li>
+                    <li><a href="terms" title="Governed by Indian jurisdiction and IT Act">Terms of Service</a></li>
                 </ul>
             </div>
             
             <div class="footer-links">
                 <h4>Services</h4>
                 <ul>
-                    <li><a href="outpatient.html">Clinics (OPD)</a></li>
-                    <li><a href="inpatient-management.html">Hospitals (IPD)</a></li>
-                    <li><a href="specialty-care.html">Specialty Care</a></li>
-                    <li><a href="pharmacy.html">Pharmacy Management</a></li>
+                    <li><a href="outpatient">Clinics (OPD)</a></li>
+                    <li><a href="inpatient-management">Hospitals (IPD)</a></li>
+                    <li><a href="specialty-care">Specialty Care</a></li>
+                    <li><a href="pharmacy">Pharmacy Management</a></li>
                 </ul>
             </div>
             
@@ -37,11 +37,11 @@ const newFooter = `<footer class="main-footer">
                 <h4>Locations We Serve</h4>
                 <nav aria-label="Locations Menu">
                     <ul>
-                        <li><a href="hospital-software-mansarovar.html">Hospital Software in Mansarovar</a></li>
-                        <li><a href="hospital-software-malviya-nagar.html">Hospital Software in Malviya Nagar</a></li>
-                        <li><a href="hospital-software-c-scheme.html">Hospital Software in C-Scheme</a></li>
-                        <li><a href="hospital-software-vaishali-nagar.html">Hospital Software in Vaishali Nagar</a></li>
-                        <li><a href="hospital-software-tonk-road.html">Hospital Software in Tonk Road</a></li>
+                        <li><a href="hospital-software-mansarovar">Hospital Software in Mansarovar</a></li>
+                        <li><a href="hospital-software-malviya-nagar">Hospital Software in Malviya Nagar</a></li>
+                        <li><a href="hospital-software-c-scheme">Hospital Software in C-Scheme</a></li>
+                        <li><a href="hospital-software-vaishali-nagar">Hospital Software in Vaishali Nagar</a></li>
+                        <li><a href="hospital-software-tonk-road">Hospital Software in Tonk Road</a></li>
                     </ul>
                 </nav>
             </div>

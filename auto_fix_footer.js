@@ -44,7 +44,7 @@ const match = indexContent.match(footerRegex);
 if (match) {
     let footerContent = match[1];
     
-    // Find all href="xxxx.html"
+    // Find all href="xxxx"
     const hrefRegex = /href="([^"]+\.html)"/g;
     let m;
     let replaces = 0;

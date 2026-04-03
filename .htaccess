@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# 1. Redirect /index and /index.html to the root domain
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index(\.html|\.php)?\ HTTP/
+RewriteRule ^index(\.html|\.php)?$ https://medical365.in/ [L,R=301]
+
+# 2. Redirect external .html requests to the clean, extensionless URL
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^\ ]+)\.html
+RewriteRule ^/?(.*)\.html$ /$1 [L,R=301]
+
+# 3. Internally add .html to extensionless URLs if that .html file exists
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]

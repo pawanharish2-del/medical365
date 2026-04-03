@@ -12,17 +12,25 @@ let xml = `<?xml version="1.0" encoding="UTF-8"?>
 files.forEach(file => {
     let priority = "0.6";
     let changefreq = "monthly";
+    const cleanName = file.replace('.html', '');
     
     if (file === "index.html") {
         priority = "1.0";
         changefreq = "daily";
+        xml += `  <url>
+    <loc>${baseUrl}/</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>\n`;
+        return;
     } else if (["outpatient.html", "hospitals.html", "clinics.html", "emr.html", "revenue-cycle-management.html"].includes(file) || file.startsWith('hospital-software-')) {
         priority = "0.9";
         changefreq = "weekly";
     }
     
     xml += `  <url>
-    <loc>${baseUrl}/${file}</loc>
+    <loc>${baseUrl}/${cleanName}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
