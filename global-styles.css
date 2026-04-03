@@ -15,7 +15,7 @@
     /* UI Colors */
     --text-primary: #0F172A;
     --text-secondary: #475569;
-    --text-muted: #64748B;
+    --text-muted: #52627A; /* Darkened from #64748B for WCAG AA compliance (4.5:1 contrast ratio) */
     --bg-main: #F8FAFC;
     --bg-white: rgba(255, 255, 255, 0.92);
     --border-light: rgba(226, 232, 240, 0.6);

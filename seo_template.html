@@ -8,7 +8,18 @@
     <title>{{meta_title}}</title>
     <meta name="description" content="{{meta_description}}">
     
-    <!-- JSON-LD LocalBusiness and SoftwareApplication Schema -->
+    <!-- Open Graph & Twitter Social Meta Tags -->
+    <meta property="og:title" content="{{meta_title}}">
+    <meta property="og:description" content="{{meta_description}}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://medical365.in/{{page_url}}">
+    <meta property="og:image" content="https://medical365.in/medical365logo1.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{meta_title}}">
+    <meta name="twitter:description" content="{{meta_description}}">
+    <meta name="twitter:image" content="https://medical365.in/medical365logo1.png">
+
+    <!-- Advanced JSON-LD Schema (Graph Structure) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -16,24 +27,57 @@
         {
           "@type": "SoftwareApplication",
           "name": "Medical365 {{feature}}",
-          "operatingSystem": "Web, Cloud",
-          "applicationCategory": "HealthcareApplication",
+          "operatingSystem": "Web, Cloud, Android, iOS",
+          "applicationCategory": "BusinessApplication, HealthcareApplication",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "120",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
           "offers": {
             "@type": "Offer",
             "price": "0",
-            "priceCurrency": "INR"
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock"
           }
         },
         {
           "@type": "LocalBusiness",
           "name": "Medical365 {{feature}} in {{location}}",
-          "description": "Provider of {{feature}} and healthcare software solutions in {{location}}.",
+          "description": "Premium {{feature}} and healthcare digital solutions for doctors and hospitals in {{location}}.",
+          "image": "https://medical365.in/medical365logo1.png",
+          "telephone": "+917791910007",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "{{location}}",
             "addressRegion": "Rajasthan",
             "addressCountry": "IN"
           }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://medical365.in/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "{{feature}}",
+              "item": "https://medical365.in/{{category_url}}"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "{{location}}",
+              "item": "https://medical365.in/{{page_url}}"
+            }
+          ]
         }
       ]
     }
@@ -81,7 +125,7 @@
 <header class="main-header" id="main-header">
     <div class="header-container">
         <a href="https://medical365.in/" class="logo" aria-label="Medical365 Home">
-            <img src="https://medical365.in/medical365logo1.png" alt="Medical365" class="logo-img">
+            <img loading="lazy" src="https://medical365.in/medical365logo1.png" alt="Medical365" class="logo-img">
         </a>
 
         <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-label="Open navigation menu">
@@ -92,7 +136,7 @@
 
         <nav class="main-nav" id="main-nav">
             <div class="mobile-menu-header">
-                <img src="https://medical365.in/medical365logo1.png" alt="Medical365" class="logo-img-mobile">
+                <img loading="lazy" src="https://medical365.in/medical365logo1.png" alt="Medical365" class="logo-img-mobile">
             </div>
 
             <div class="nav-body">
@@ -153,7 +197,7 @@
                             <div class="mega-content">
                                 <div class="tab-pane active" id="clinics" role="tabpanel">
                                     <div class="pane-header">
-                                        <h3 class="tab-title">Clinic Solutions</h3>
+                                        <h2 class="tab-title">Clinic Solutions</h2>
                                         <p class="tab-desc">Comprehensive tools to streamline your daily clinic operations.</p>
                                     </div>
                                     <ul class="sub-menu-list two-columns">
@@ -176,7 +220,7 @@
 
                                 <div class="tab-pane" id="hospitals" role="tabpanel">
                                     <div class="pane-header">
-                                        <h3 class="tab-title">Hospital Management</h3>
+                                        <h2 class="tab-title">Hospital Management</h2>
                                         <p class="tab-desc">Enterprise-grade solutions for mid to large scale hospitals.</p>
                                     </div>
                                     <ul class="sub-menu-list three-columns">
@@ -209,7 +253,7 @@
 
                                 <div class="tab-pane" id="specialty-care" role="tabpanel">
                                     <div class="pane-header">
-                                        <h3 class="tab-title">Specialty Care EHR</h3>
+                                        <h2 class="tab-title">Specialty Care EHR</h2>
                                         <p class="tab-desc">Purpose-built EHR modules and tracking features designed specifically for each clinical specialty.</p>
                                     </div>
                                     
@@ -362,7 +406,7 @@
                                 </div>
                                 <div class="tab-pane" id="patients" role="tabpanel">
                                     <div class="pane-header">
-                                        <h3 class="tab-title">Patients and their Families</h3>
+                                        <h2 class="tab-title">Patients and their Families</h2>
                                     </div>
                                     <ul class="sub-menu-list">
                                         <li><a href="online-scheduling"><span>Online Scheduling</span></a></li>
@@ -375,7 +419,7 @@
                                 </div>
                                 <div class="tab-pane" id="hospital-chain" role="tabpanel">
                                     <div class="pane-header">
-                                        <h3 class="tab-title">Hospital Chain Management</h3>
+                                        <h2 class="tab-title">Hospital Chain Management</h2>
                                     </div>
                                     <ul class="sub-menu-list">
                                         <li><a href="centralised-management"><span>Centralised Management</span></a></li>
@@ -385,7 +429,7 @@
                                 </div>
                                 <div class="tab-pane" id="hospital-cfo" role="tabpanel">
                                     <div class="pane-header">
-                                        <h3 class="tab-title">Hospital CFO</h3>
+                                        <h2 class="tab-title">Hospital CFO</h2>
                                     </div>
                                     <ul class="sub-menu-list two-columns">
                                         <li><a href="revenue-cycle-management"><span>Revenue Cycle Management</span></a></li>
@@ -398,7 +442,7 @@
                                 </div>
                                 <div class="tab-pane" id="hospital-it" role="tabpanel">
                                     <div class="pane-header">
-                                        <h3 class="tab-title">Hospital IT Manager</h3>
+                                        <h2 class="tab-title">Hospital IT Manager</h2>
                                     </div>
                                     <ul class="sub-menu-list two-columns">
                                         <li><a href="cloud-solution"><span>Cloud Solution & Migration</span></a></li>
@@ -422,7 +466,7 @@
                                 </div>
                                 <div class="tab-pane" id="marketing-managers" role="tabpanel">
                                     <div class="pane-header">
-                                        <h3 class="tab-title">Marketing Managers</h3>
+                                        <h2 class="tab-title">Marketing Managers</h2>
                                     </div>
                                     <ul class="sub-menu-list two-columns">
                                         <li><a href="patient-demographics"><span>Patient Demographics & Insights</span></a></li>
@@ -438,7 +482,7 @@
                                 </div>
                                 <div class="tab-pane" id="backoffice-hr" role="tabpanel">
                                     <div class="pane-header">
-                                        <h3 class="tab-title">Backoffice & HR Managers</h3>
+                                        <h2 class="tab-title">Backoffice & HR Managers</h2>
                                     </div>
                                     <ul class="sub-menu-list two-columns">
                                         <li><a href="finance-accounting"><span>Finance and Accounting</span></a></li>
@@ -455,7 +499,7 @@
                                 </div>
                                 <div class="tab-pane" id="government" role="tabpanel">
                                     <div class="pane-header">
-                                        <h3 class="tab-title">Government</h3>
+                                        <h2 class="tab-title">Government</h2>
                                     </div>
                                     <ul class="sub-menu-list two-columns">
                                         <li><a href="population-health"><span>Integrated Population Health</span></a></li>
@@ -518,7 +562,7 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                         </div>
                         <div>
-                            <h3>Live Security Sync</h3>
+                            <h2>Live Security Sync</h2>
                             <p>Real-time encrypted backup</p>
                         </div>
                     </div>
@@ -608,32 +652,32 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🩺</div>
-                    <h3>Electronic Medical Records (EMR)</h3>
+                    <h2>Electronic Medical Records (EMR)</h2>
                     <p>Specialty-specific charting that loads instantly, optimized for high-volume Indian clinics.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💰</div>
-                    <h3>Revenue Cycle Management (RCM)</h3>
+                    <h2>Revenue Cycle Management (RCM)</h2>
                     <p>Zero revenue leakage with end-to-end claim tracking, TPA management, and real-time dashboards.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📹</div>
-                    <h3>Telemedicine Hub</h3>
+                    <h2>Telemedicine Hub</h2>
                     <p>Secure HD video consultations natively embedded, allowing remote care across {{location}}.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">👥</div>
-                    <h3>Advanced Patient Portal</h3>
+                    <h2>Advanced Patient Portal</h2>
                     <p>Empower patients to book appointments, download reports, and pay dues from a branded app.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💊</div>
-                    <h3>Pharmacy & Inventory</h3>
+                    <h2>Pharmacy & Inventory</h2>
                     <p>Real-time expiry tracking, direct e-prescription fulfillment, and automated PO generation.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔬</div>
-                    <h3>Dynamic LIMS Hub</h3>
+                    <h2>Dynamic LIMS Hub</h2>
                     <p>Analyze results pushed directly into patient records with bidirectional machine integration.</p>
                 </div>
             </div>
@@ -741,7 +785,7 @@
         <!-- Brand -->
         <div class="mf-brand">
           <a href="https://medical365.in/" aria-label="Medical365 Home">
-            <img src="https://medical365.in/medical365logo1.png" alt="Medical365" class="mf-logo" width="160" height="38">
+            <img loading="lazy" src="https://medical365.in/medical365logo1.png" alt="Medical365" class="mf-logo" width="160" height="38">
           </a>
           <p class="mf-tagline">Empowering healthcare providers with modern, cloud-based management solutions.</p>
           <a href="book-demo" class="mf-demo-pill">Book a Demo</a>
@@ -775,7 +819,7 @@
 
         <!-- Quick Links -->
         <div class="mf-col">
-          <h3 class="mf-col-title">Quick Links</h3>
+          <h2 class="mf-col-title">Quick Links</h2>
           <ul class="mf-link-col">
             <li><a href="https://medical365.in/">Home</a></li>
             <li><a href="about">About Us</a></li>
@@ -790,13 +834,13 @@
 
         <!-- Services -->
         <div class="mf-col mf-col-services">
-          <h3 class="mf-col-title">Services</h3>
+          <h2 class="mf-col-title">Services</h2>
           <ul class="mf-services-grid"><li><a href="clinic-management-system-jaipur"><span class="mf-srv-dot"></span>Clinics (OPD)</a></li><li><a href="inpatient-management-software-udaipur"><span class="mf-srv-dot"></span>Hospitals (IPD)</a></li><li><a href="emr-software-hospitals-bikaner"><span class="mf-srv-dot"></span>Specialty Care & EMR</a></li><li><a href="pharmacy-management-software-raja-park"><span class="mf-srv-dot"></span>Pharmacy Management</a></li><li><a href="lims-laboratory-information-management-jaipur"><span class="mf-srv-dot"></span>Lab & Diagnostics (LIMS)</a></li><li><a href="telemedicine-platform-clinics-mansarovar"><span class="mf-srv-dot"></span>Telemedicine Platform</a></li><li><a href="hospital-revenue-cycle-management-rajasthan"><span class="mf-srv-dot"></span>Revenue Cycle Management</a></li><li><a href="patient-portal-software-vidyadhar-nagar"><span class="mf-srv-dot"></span>Patient Portal & App</a></li><li><a href="hospital-hrms-jaipur"><span class="mf-srv-dot"></span>Hospital HRMS</a></li><li><a href="blood-bank-software-udaipur"><span class="mf-srv-dot"></span>Blood Bank Software</a></li><li><a href="operation-theater-management-alwar"><span class="mf-srv-dot"></span>Operation Theater (OT)</a></li><li><a href="nursing-management-system-sikar"><span class="mf-srv-dot"></span>Nursing Management</a></li><li><a href="healthcare-crm-software-udaipur"><span class="mf-srv-dot"></span>Healthcare CRM</a></li><li><a href="abha-compliance-software-hospitals-kota"><span class="mf-srv-dot"></span>ABHA / ABDM Compliance</a></li><li><a href="healthcare-cloud-migration-services-jaipur"><span class="mf-srv-dot"></span>Cloud Migration & IT</a></li><li><a href="healthcare-digital-marketing-services-rajasthan"><span class="mf-srv-dot"></span>Digital Marketing for Hospitals</a></li></ul>
         </div>
 
         <!-- Contact -->
         <div class="mf-col mf-col-contact">
-          <h3 class="mf-col-title">Contact Details</h3>
+          <h2 class="mf-col-title">Contact Details</h2>
           <div class="mf-contact-block">
             <div class="mf-contact-item">
               <svg class="mf-contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
@@ -848,10 +892,10 @@
       <!-- ROW 2: Locations We Serve ── -->
       <div class="mf-row mf-row-loc">
         <div class="mf-section-head">
-          <h3 class="mf-col-title">
+          <h2 class="mf-col-title">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="color:#37B39C;vertical-align:middle;margin-right:6px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             Locations We Serve
-          </h3>
+          </h2>
           <span class="mf-section-sub">Hospital &amp; Clinic Software across Rajasthan</span>
         </div>
         <ul class="mf-loc-grid">
@@ -876,10 +920,10 @@
       <!-- ROW 3: All 57 pages by category ── -->
       <div class="mf-row mf-row-pages">
         <div class="mf-section-head">
-          <h3 class="mf-col-title">
+          <h2 class="mf-col-title">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#37B39C" stroke-width="2.5" aria-hidden="true" style="vertical-align:middle;margin-right:6px;"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
             All Resources &amp; Guides
-          </h3>
+          </h2>
           <span class="mf-section-sub">57 in-depth guides covering every healthcare software category</span>
         </div>
         <div class="mf-all-cats">
@@ -1035,4 +1079,5 @@
 
 </body>
 </html>
+
 
